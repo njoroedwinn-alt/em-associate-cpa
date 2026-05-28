@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EM & Associate CPA(K) | Audit, Advisory & Compliance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #0d2b1f;
+    --forest-mid: #163d2c;
+    --forest-light: #1e5238;
+    --gold: #c9a84c;
+    --gold-light: #e2c47a;
+    --gold-pale: #f5e9c8;
+    --cream: #faf7f0;
+    --warm-white: #fffef9;
+    --text-dark: #0d1b14;
+    --text-mid: #3a5a48;
+    --text-muted: #6b8c78;
+    --border: rgba(201,168,76,0.25);
+    --border-light: rgba(201,168,76,0.12);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ── TYPOGRAPHY ── */
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.1; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 5vw;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(13,43,31,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .nav-logo span {
+    display: block;
+    font-size: 0.6rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,247,240,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+    padding-bottom: 3px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--forest) !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--forest) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--gold-light);
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--forest);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* diagonal geometric shape */
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 55vw;
+    height: 120vh;
+    background: linear-gradient(135deg, var(--forest-mid) 0%, rgba(30,82,56,0.4) 100%);
+    transform: skewX(-8deg);
+    pointer-events: none;
+  }
+
+  /* gold line accent */
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 60%, transparent 100%);
+  }
+
+  /* decorative circles */
+  .hero-orb-1 {
+    position: absolute;
+    top: 15%;
+    right: 8%;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+    pointer-events: none;
+  }
+
+  .hero-orb-2 {
+    position: absolute;
+    top: 20%;
+    right: 12%;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.1);
+    pointer-events: none;
+  }
+
+  .hero-orb-3 {
+    position: absolute;
+    top: 28%;
+    right: 17%;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* vertical text on right */
+  .hero-vert-text {
+    position: absolute;
+    right: 2vw;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.4);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 5vw;
+    max-width: 720px;
+    animation: heroFadeUp 1s ease both;
+  }
+
+  @keyframes heroFadeUp {
+    from { opacity:0; transform: translateY(40px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    animation: heroFadeUp 1s 0.1s ease both;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.0;
+    margin-bottom: 1rem;
+    animation: heroFadeUp 1s 0.2s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    font-weight: 300;
+    color: rgba(250,247,240,0.6);
+    line-height: 1.75;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    animation: heroFadeUp 1s 0.35s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: heroFadeUp 1s 0.5s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--forest);
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(250,247,240,0.3);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* hero stats */
+  .hero-stats {
+    position: absolute;
+    bottom: 5rem;
+    left: 5vw;
+    display: flex;
+    gap: 3rem;
+    animation: heroFadeUp 1s 0.65s ease both;
+    z-index: 2;
+  }
+
+  .hero-stat-item { text-align: left; }
+
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,247,240,0.4);
+    margin-top: 0.25rem;
+  }
+
+  /* ── MARQUEE STRIP ── */
+  .marquee-strip {
+    background: var(--gold);
+    padding: 0.75rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee 28s linear infinite;
+    gap: 0;
+  }
+
+  .marquee-item {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--forest);
+    padding: 0 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .marquee-dot {
+    width: 4px; height: 4px;
+    background: var(--forest);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 8rem 5vw;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #about::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+  }
+
+  .section-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    font-weight: 300;
+  }
+
+  .section-body p + p { margin-top: 1rem; }
+
+  /* about visual panel */
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--forest);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--gold-light) 100%);
+  }
+
+  .about-card::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.1);
+    pointer-events: none;
+  }
+
+  .about-cpa-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-pillars {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .about-pillar {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .pillar-icon {
+    width: 36px; height: 36px;
+    min-width: 36px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pillar-icon svg { color: var(--gold); }
+
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.78rem;
+    color: rgba(250,247,240,0.5);
+    line-height: 1.6;
+  }
+
+  /* ── SERVICES ── */
+  #services {
+    padding: 8rem 5vw;
+    background: var(--forest);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #services::before {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .services-header .section-title { color: var(--cream); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--forest);
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.3s ease;
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover { background: var(--forest-mid); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(201,168,76,0.12);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+  }
+
+  .service-card:hover .service-num { color: rgba(201,168,76,0.22); }
+
+  .service-icon-line {
+    width: 32px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 1.25rem;
+    transition: width 0.3s;
+  }
+
+  .service-card:hover .service-icon-line { width: 52px; }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 0.83rem;
+    color: rgba(250,247,240,0.5);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.25rem 0.65rem;
+    border-radius: 2px;
+  }
+
+  /* ── WHY US ── */
+  #why {
+    padding: 8rem 5vw;
+    background: var(--warm-white);
+    position: relative;
+  }
+
+  .why-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .why-sticky {
+    position: sticky;
+    top: 100px;
+  }
+
+  .why-items {
+    display: grid;
+    gap: 0;
+  }
+
+  .why-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(13,43,31,0.08);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .why-item:first-child { padding-top: 0; border-top: 1px solid rgba(13,43,31,0.08); }
+
+  .why-item:hover .why-item-num { color: var(--gold); }
+
+  .why-item-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(13,43,31,0.18);
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .why-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .why-item-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── SECTORS ── */
+  #sectors {
+    padding: 8rem 5vw;
+    background: var(--cream);
+  }
+
+  .sectors-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .sectors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .sector-pill {
+    background: transparent;
+    border: 1px solid rgba(13,43,31,0.15);
+    color: var(--text-mid);
+    padding: 0.65rem 1.5rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    transition: all 0.25s;
+    cursor: default;
+  }
+
+  .sector-pill:hover {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--cream);
+    transform: translateY(-2px);
+  }
+
+  .sector-pill.featured {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  /* ── CTA BAND ── */
+  #cta {
+    background: var(--forest);
+    padding: 6rem 5vw;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  #cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #cta::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 70%, transparent 100%);
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .cta-title em { font-style: italic; color: var(--gold-light); }
+
+  .cta-sub {
+    font-size: 0.95rem;
+    color: rgba(250,247,240,0.55);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    padding: 8rem 5vw;
+    background: var(--warm-white);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info-block { }
+
+  .contact-info-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .ci-icon {
+    width: 42px; height: 42px;
+    min-width: 42px;
+    background: var(--forest);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ci-icon svg { stroke: var(--gold); }
+
+  .ci-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .ci-value {
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* form */
+  .contact-form {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    background: var(--cream);
+    border: 1px solid rgba(13,43,31,0.12);
+    border-radius: 2px;
+    padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+  }
+
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8c78' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .form-submit {
+    background: var(--forest);
+    color: var(--gold-light);
+    border: 1px solid var(--forest);
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    justify-self: start;
+    transition: all 0.25s;
+  }
+
+  .form-submit:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--forest);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(201,168,76,0.25);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark);
+    padding: 4rem 5vw 2rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1rem;
+  }
+
+  .footer-desc {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 260px;
+  }
+
+  .footer-col-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+
+  .footer-links { list-style: none; }
+
+  .footer-links li { margin-bottom: 0.65rem; }
+
+  .footer-links a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-reg {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.2);
+    text-align: right;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .mobile-menu {
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--forest);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 5vw;
+      display: none;
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 999;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250,247,240,0.75);
+      text-decoration: none;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--gold-light); }
+
+    .section-grid-2,
+    .why-layout,
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-stats {
+      gap: 2rem;
+    }
+
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-reg { text-align: left; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    EM &amp; Associate CPA(K)
+    <span>Certified Public Accountants</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#sectors">Sectors</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#why" onclick="toggleMenu()">Why Us</a>
+  <a href="#sectors" onclick="toggleMenu()">Sectors</a>
+  <a href="#contact" onclick="toggleMenu()">Get in Touch</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-orb-3"></div>
+  <div class="hero-vert-text">EM &amp; Associate CPA(K) &mdash; Nairobi, Kenya</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Certified Public Accountants</div>
+
+    <h1 class="hero-title">
+      Precision.<br>
+      <em>Integrity.</em><br>
+      Advisory.
+    </h1>
+
+    <p class="hero-subtitle">
+      A dedicated team of Certified Public Accountants delivering audit,
+      compliance, financial advisory, and governance solutions tailored for
+      modern businesses and NGOs across Kenya.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Our Services</a>
+      <a href="#contact" class="btn-outline">Schedule a Consultation</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat-item">
+      <div class="hero-stat-num">7+</div>
+      <div class="hero-stat-label">Core Services</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="hero-stat-num">CPA(K)</div>
+      <div class="hero-stat-label">Certified</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="hero-stat-num">AML</div>
+      <div class="hero-stat-label">Compliance Ready</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <!-- repeated twice for seamless loop -->
+    <span class="marquee-item">Audit Services <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AML/CFT Compliance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Risk Assessments <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Financial Advisory <span class="marquee-dot"></span></span>
+    <span class="marquee-item">NGO Proposal Writing <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Tax Compliance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Governance Advisory <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Internal Controls <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Audit Services <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AML/CFT Compliance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Risk Assessments <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Financial Advisory <span class="marquee-dot"></span></span>
+    <span class="marquee-item">NGO Proposal Writing <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Tax Compliance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Governance Advisory <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Internal Controls <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-grid-2">
+    <div class="reveal">
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="section-title">A New Standard in <em>Financial Excellence</em></h2>
+      <div class="section-body">
+        <p>
+          EM &amp; Associate CPA(K) is a registered firm of Certified Public Accountants
+          based in Kenya, committed to providing high-integrity, results-driven financial
+          and advisory services to a diverse portfolio of clients.
+        </p>
+        <p>
+          From small and medium enterprises to non-governmental organizations and
+          corporates, we bring clarity, compliance, and confidence to every engagement.
+          Our work is rooted in the highest professional standards as defined by ICPAK
+          and international best practices.
+        </p>
+        <p>
+          We believe that sound financial governance is not a luxury &mdash; it is the
+          foundation upon which sustainable organizations are built.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <div class="about-cpa-badge">ICPAK Registered</div>
+
+        <div class="about-pillars">
+          <div class="about-pillar">
+            <div class="pillar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Professional Integrity</div>
+              <div class="pillar-desc">Every engagement is guided by ethical standards, independence, and objectivity.</div>
+            </div>
+          </div>
+
+          <div class="about-pillar">
+            <div class="pillar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Evidence-Based Advisory</div>
+              <div class="pillar-desc">Our recommendations are grounded in thorough data analysis and industry expertise.</div>
+            </div>
+          </div>
+
+          <div class="about-pillar">
+            <div class="pillar-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+            </div>
+            <div>
+              <div class="pillar-title">Client-Centered Approach</div>
+              <div class="pillar-desc">We tailor each solution to fit your specific operational context and goals.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-eyebrow" style="justify-content:center; color:var(--gold-light);">What We Offer</div>
+    <h2 class="section-title" style="color:var(--cream);">Our Core <em>Services</em></h2>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-icon-line"></div>
+      <div class="service-title">Audit Services</div>
+      <p class="service-desc">
+        Comprehensive internal and external audit support to evaluate financial
+        accuracy, operational efficiency, and regulatory compliance. We provide
+        independent assurance that builds stakeholder trust.
+      </p>
+      <span class="service-tag">Internal &amp; External</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-icon-line"></div>
+      <div class="service-title">AML/CFT Compliance Reviews</div>
+      <p class="service-desc">
+        Thorough Anti-Money Laundering and Counter Financing of Terrorism
+        compliance assessments. We help organizations meet CBK and FATF
+        regulatory requirements and manage financial crime risk.
+      </p>
+      <span class="service-tag">Regulatory Compliance</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-icon-line"></div>
+      <div class="service-title">Risk Assessments</div>
+      <p class="service-desc">
+        Identify, quantify, and prioritize organizational risks across financial,
+        operational, strategic, and compliance dimensions. We deliver actionable
+        risk mitigation frameworks.
+      </p>
+      <span class="service-tag">Enterprise Risk</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div class="service-icon-line"></div>
+      <div class="service-title">Financial Advisory &amp; Budgeting</div>
+      <p class="service-desc">
+        Strategic financial planning, budget development, cash flow forecasting,
+        and investment analysis to align your financial decisions with long-term
+        organizational objectives.
+      </p>
+      <span class="service-tag">Strategic Planning</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <div class="service-icon-line"></div>
+      <div class="service-title">NGO Proposal Writing</div>
+      <p class="service-desc">
+        Expert grant proposal development and financial narrative writing for
+        NGOs seeking donor funding. We structure compelling, compliant, and
+        technically sound proposals that win grants.
+      </p>
+      <span class="service-tag">Donor Funding</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">06</div>
+      <div class="service-icon-line"></div>
+      <div class="service-title">Governance &amp; Internal Controls</div>
+      <p class="service-desc">
+        Design and review of governance frameworks, policy manuals, board
+        advisory structures, and internal control systems to ensure accountability
+        and transparency at all organizational levels.
+      </p>
+      <span class="service-tag">Governance Advisory</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-num">07</div>
+      <div class="service-icon-line"></div>
+      <div class="service-title">Tax Compliance Support</div>
+      <p class="service-desc">
+        End-to-end tax compliance assistance including KRA filings, VAT returns,
+        PAYE, corporate tax planning, and tax health checks to minimize exposure
+        and ensure full regulatory compliance.
+      </p>
+      <span class="service-tag">KRA Compliance</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-layout">
+    <div class="why-sticky reveal">
+      <div class="section-eyebrow">Our Advantage</div>
+      <h2 class="section-title">Why Choose <em>EM &amp; Associate</em></h2>
+      <p class="section-body" style="margin-top:1rem;">
+        We combine deep technical expertise with genuine commitment to client success.
+        Here is what sets us apart.
+      </p>
+    </div>
+
+    <div class="why-items reveal">
+      <div class="why-item">
+        <div class="why-item-num">01</div>
+        <div>
+          <div class="why-item-title">ICPAK Certified Professionals</div>
+          <p class="why-item-desc">
+            All our work is carried out or supervised by fully registered Certified Public
+            Accountants recognized by the Institute of Certified Public Accountants of Kenya.
+          </p>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-num">02</div>
+        <div>
+          <div class="why-item-title">Deep Local Regulatory Knowledge</div>
+          <p class="why-item-desc">
+            We have thorough knowledge of Kenyan tax laws, CBK regulations, Companies Act
+            requirements, and donor compliance frameworks that govern our clients' operations.
+          </p>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-num">03</div>
+        <div>
+          <div class="why-item-title">Multi-Sector Experience</div>
+          <p class="why-item-desc">
+            From NGOs to financial institutions, SACCOs, and SMEs, our diverse portfolio
+            means we bring cross-sector insights to every mandate we handle.
+          </p>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-num">04</div>
+        <div>
+          <div class="why-item-title">Confidentiality as a Core Value</div>
+          <p class="why-item-desc">
+            Client confidentiality is non-negotiable. Every engagement is handled with the
+            highest level of discretion, backed by professional ethics obligations.
+          </p>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-num">05</div>
+        <div>
+          <div class="why-item-title">Timely, Actionable Deliverables</div>
+          <p class="why-item-desc">
+            We deliver comprehensive, clearly written reports and recommendations on
+            schedule, so your decisions are always informed by current, relevant intelligence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors">
+  <div class="sectors-header reveal">
+    <div class="section-eyebrow" style="justify-content:center;">Industries We Serve</div>
+    <h2 class="section-title">Sectors We <em>Work With</em></h2>
+  </div>
+
+  <div class="sectors-grid reveal">
+    <span class="sector-pill featured">Non-Governmental Organizations</span>
+    <span class="sector-pill featured">Financial Institutions</span>
+    <span class="sector-pill">Small &amp; Medium Enterprises</span>
+    <span class="sector-pill">SACCOs &amp; Cooperatives</span>
+    <span class="sector-pill">Healthcare Providers</span>
+    <span class="sector-pill">Real Estate &amp; Property</span>
+    <span class="sector-pill">Educational Institutions</span>
+    <span class="sector-pill">Religious Organizations</span>
+    <span class="sector-pill">Import &amp; Export Businesses</span>
+    <span class="sector-pill">Technology Startups</span>
+    <span class="sector-pill">Public Sector Entities</span>
+    <span class="sector-pill">Manufacturing</span>
+    <span class="sector-pill">Hospitality &amp; Tourism</span>
+    <span class="sector-pill">Microfinance Institutions</span>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta">
+  <h2 class="cta-title reveal">Ready to Elevate Your<br><em>Financial Governance?</em></h2>
+  <p class="cta-sub reveal">
+    Let us bring clarity, compliance, and strategic insight to your organization.
+    Schedule a confidential consultation today.
+  </p>
+  <div class="reveal">
+    <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="reveal">
+      <div class="section-eyebrow">Get in Touch</div>
+      <h2 class="section-title">Let us Start a <em>Conversation</em></h2>
+      <p class="section-body" style="margin-top:1rem; margin-bottom:2.5rem;">
+        Whether you have an immediate compliance need or are planning your next
+        financial strategy, we are here to help. Reach out through any channel below.
+      </p>
+
+      <div class="contact-info-item">
+        <div class="ci-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="ci-label">Office Location</div>
+          <div class="ci-value">Nairobi, Kenya</div>
+        </div>
+      </div>
+
+      <div class="contact-info-item">
+        <div class="ci-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 9.79 19.79 19.79 0 011.12 1.18 2 2 0 013.12 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="ci-label">Phone / WhatsApp</div>
+          <div class="ci-value">+254 700 000 000</div>
+        </div>
+      </div>
+
+      <div class="contact-info-item">
+        <div class="ci-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div>
+          <div class="ci-label">Email</div>
+          <div class="ci-value">info@emassociatecpa.co.ke</div>
+        </div>
+      </div>
+
+      <div class="contact-info-item">
+        <div class="ci-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <div>
+          <div class="ci-label">Working Hours</div>
+          <div class="ci-value">Mon &ndash; Fri: 8:00 AM &ndash; 5:30 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="reveal">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" placeholder="John" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" placeholder="Mwangi" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="john@yourcompany.co.ke" required />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="+254 7XX XXX XXX" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Service of Interest</label>
+          <select class="form-select">
+            <option value="" disabled selected>Select a service...</option>
+            <option>Audit Services (Internal &amp; External)</option>
+            <option>AML/CFT Compliance Reviews</option>
+            <option>Risk Assessments</option>
+            <option>Financial Advisory &amp; Budgeting</option>
+            <option>NGO Proposal Writing</option>
+            <option>Governance &amp; Internal Control Advisory</option>
+            <option>Tax Compliance Support</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Your Organization</label>
+          <input class="form-input" type="text" placeholder="Company / NGO Name" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Briefly describe your needs or question..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
+
+        <div id="formMsg" style="font-size:0.82rem; color:var(--gold); display:none; margin-top:0.5rem;">
+          Thank you. We will be in touch shortly.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">EM &amp; Associate CPA(K)</div>
+      <div class="footer-brand-sub">Certified Public Accountants &bull; Kenya</div>
+      <p class="footer-desc">
+        Delivering precision audit, compliance, and advisory services to businesses,
+        NGOs, and institutions across Kenya with integrity and professionalism.
+      </p>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Audit Services</a></li>
+        <li><a href="#services">AML/CFT Reviews</a></li>
+        <li><a href="#services">Risk Assessments</a></li>
+        <li><a href="#services">Financial Advisory</a></li>
+        <li><a href="#services">NGO Proposals</a></li>
+        <li><a href="#services">Tax Compliance</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#sectors">Sectors</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Compliance</div>
+      <ul class="footer-links">
+        <li><a href="#">ICPAK Member</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Engagement</a></li>
+        <li><a href="#">KRA Compliance</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copyright">
+      &copy; 2025 EM &amp; Associate CPA(K). All rights reserved.
+    </div>
+    <div class="footer-reg">
+      Regulated by ICPAK &bull; Practicing Certificate Holder &bull; Nairobi, Kenya
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── MOBILE MENU ──
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // ── SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('in-view');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── NAV SCROLL EFFECT ──
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 60) {
+      nav.style.height = '60px';
+    } else {
+      nav.style.height = '72px';
+    }
+  });
+
+  // ── FORM SUBMIT ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMsg');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Sent!';
+      msg.style.display = 'block';
+      e.target.reset();
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        msg.style.display = 'none';
+      }, 4000);
+    }, 1200);
+  }
+
+  // ── STAGGER SERVICE CARDS ──
+  const cards = document.querySelectorAll('.service-card');
+  cards.forEach((card, i) => {
+    card.style.transitionDelay = `${i * 60}ms`;
+  });
+</script>
+</body>
+</html>
